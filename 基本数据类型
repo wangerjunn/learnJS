@@ -1,0 +1,80 @@
+//数据类型和变量
+
+JavaScript不区分整数和浮点数，统一用Number表示
+
+NaN 表示Not a Number,当无法计算结果时用NaN表示
+Infinity 表示无限大，当数值超过了JavaScript的Number所能表示的最大值，就表示为Infinity
+
+==表示相等运算符，它会自动转换数据类型再比较
+===比较它不会自动转换数据类型，如果数据类型不一致，返回false，使用===比较
+
+NaN这个特殊的Number与所有其他值都不相等，包括自己：NaN === NaN；//false
+
+唯一能判断NaN的方法通过isNaN();
+
+浮点数相等比较：
+	浮点数在运算过程中会产生误差，比较浮点数是否相等，只能计算他们之差的绝对值，看是否小于某个阈值
+
+null和undefined
+	null表示一个空值，它和0以及空字符串''不同，0是一个数值，''表示长度为哦的字符串，null表示空
+
+数组：是一组按顺序排列的集合，数组可以包括任意数据类型。[1,2,'HELLO'，false]；
+	slice()就是对应String的substring()版本，它截取Array的部分元素，然后返回一个新的Array：
+	如果不给slice()传递任何参数，它就会从头到尾截取所有元素
+	var arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+	arr.slice(0, 3); // 从索引0开始，到索引3结束，但不包括索引3: ['A', 'B', 'C']
+	arr.slice(3); // 从索引3开始到结束: ['D', 'E', 'F', 'G']
+
+	push()向Array的末尾添加若干元素，pop()则把Array的最后一个元素删除掉：
+	unshift和shift
+	如果要往Array的头部添加若干元素，使用unshift()方法，shift()方法则把Array的第一个元素删掉：
+	var arr = [1, 2];
+	arr.unshift('A', 'B'); // 返回Array新的长度: 4
+	arr; // ['A', 'B', 1, 2]
+	arr.shift(); // 'A'
+	arr; // ['B', 1, 2]
+	arr.shift(); arr.shift(); arr.shift(); // 连续shift 3次
+	arr; // []
+	arr.shift(); // 空数组继续shift不会报错，而是返回undefined
+	arr; // []
+
+	reverse()把整个Array的元素给倒序，也就是反转
+	splice()方法是修改Array的“万能方法”，它可以从指定的索引开始删除若干元素，然后再从该位置添加若干元素
+	var arr = ['Microsoft', 'Apple', 'Yahoo', 'AOL', 'Excite', 'Oracle'];
+	// 从索引2开始删除3个元素,然后再添加两个元素:
+	arr.splice(2, 3, 'Google', 'Facebook'); // 返回删除的元素 ['Yahoo', 'AOL', 'Excite']
+	arr; // ['Microsoft', 'Apple', 'Google', 'Facebook', 'Oracle']
+	// 只删除,不添加:
+	arr.splice(2, 2); // ['Google', 'Facebook']
+	arr; // ['Microsoft', 'Apple', 'Oracle']
+	// 只添加,不删除:
+	arr.splice(2, 0, 'Google', 'Facebook'); // 返回[],因为没有删除任何元素
+	arr; // ['Microsoft', 'Apple', 'Google', 'Facebook', 'Oracle']
+	
+对象：是一组由键-值组成的无序集合，例如:
+var person = {
+	name:'Bob',
+	age:20
+}
+获取对象属性，可用 对象变量.属性名:person.name
+
+变量
+	变量在JavaScript中就是用一个变量名表示，变量名是大小写英文、数字、$和_的组合，且不能用数字开头。变量名也不能是JavaScript的关键字，如if、while等。申明一个变量用var语句
+
+strict模式
+	JavaScript在设计之初，为了方便初学者学习，并不强制要求用var申明变量。这个设计错误带来了严重的后果：如果一个变量没有通过var申明就被使用，那么该变量就自动被申明为全局变量：
+
+	i = 10; // i现在是全局变量
+
+字符串：用''或""括起来的字符表示。如果'本身也是一个字符，那就可以用""括起来
+	如果有很多变量需要连接，用+号就比较麻烦。ES6新增了一种模板字符串，表示方法和上面的多行字符串一样，但是它会自动替换字符串中的变量：
+	var name = '小明';
+	var age = 20;
+	var message = `你好, ${name}, 你今年${age}岁了!`;
+	alert(message);
+
+
+
+
+
+
