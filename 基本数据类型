@@ -1,3 +1,5 @@
+http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014351226817991a9c08f1ec0a45c99b9209bcfc71b8f6000
+
 //数据类型和变量
 
 JavaScript不区分整数和浮点数，统一用Number表示
@@ -255,30 +257,90 @@ strict模式
   		xiaoming.age();
 
 
+  	apply：
+  		要指定函数的this指向哪个对象，可以用函数本身的apply方法，它接受两个参数，第一个参数：需要绑定的this变量，第二个参数：array，表示函数本身的参数。
+
+  		用apply修复getAge()调用：
+
+  			age: function () {
+  				
+  				function  getAgeFromBirth() {
+
+  					let y = new Date().getFullYear;
+  					return y -this.birth;
+  				}
+  			}
+
+  			getAge.apply(xiaoming,[]);
 
 
+ 高阶函数（Higher-order function）
+
+  		function add(x,y,f) {
+  			return f(x)+f(y);
+  		}
+
+  		add(-5,6,Math.abs);
+
+  	Map/Reduce
+
+  		由于map()方法定义在JavaScript的array中，调用array的map()方法，传入自己的函数，得到新array为结果。
+
+  		function pow(x) {
+  			return x*x;
+  		}	
+
+  		var arr = [1,2,3,4,5];
+  		arr.map(pow);//[1, 4, 9, 16, 25, 36, 49, 64, 81];
+
+  		arr.map(String);// ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+  	Reduce
+  		array的reduce()把一个函数作用房子这个array的[X1,X2...]上，这个函数必须接收两个参数，reduce()把结果作为下一个元素做累计计算
+
+  		[x1,x2,x3,x4].reudce(f) = f(f(f(x1,x2),x3),x4);
+
+  		var arr = [1,3,5,7,9];
+
+  		arr.reduce(function (x,y) {
+  			return x+y;
+  		});//25
+
+  		var arr = ['adam','LISA','barT'];
+
+  		function transterLetter(x) {
+  			
+  		 	return x.toLowerCase();
+  		}
+  		arr.map(transterLetter);
+
+  		function transterLetterUpperCase(x) {
+  			return s.split('').[0].toUpperCase();
+  		}
+
+  		arr.map(transterLetterUpperCase);
+
+  		'12345'.split('').map(Number);
+
+  	filter
+
+	  	var arr = [1,2,3,4,5];
+	  	var r = arr.filter(funciton (x) {
+	  		return x % 2 !== 0;
+	  	});
+	  	r;
 
 
+  	回调函数
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		filter()接收的回调函数，其实可以有多个参数。通常我们仅使用第一个参数，表示Array的某个元素。回调函数还可以接收另外两个参数，表示元素的位置和数组本身：
+	  	var arr = ['A', 'B', 'C'];
+		var r = arr.filter(function (element, index, self) {
+		    console.log(element); // 依次打印'A', 'B', 'C'
+		    console.log(index); // 依次打印0, 1, 2
+		    console.log(self); // self就是变量arr
+		    return true;
+		});
 
 
 
